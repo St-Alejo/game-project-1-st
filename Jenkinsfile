@@ -4,19 +4,25 @@ pipeline {
     stages {
         stage('Instalar dependencias') {
             steps {
-                sh 'npm install'
+                dir('game-project') {
+                    sh 'npm install'
+                }
             }
         }
 
         stage('Pruebas unitarias') {
             steps {
-                sh 'npm run test'
+                dir('game-project') {
+                    sh 'npm run test'
+                }
             }
         }
 
         stage('Compilar el proyecto') {
             steps {
-                sh 'npm run build'
+                dir('game-project') {
+                    sh 'npm run build'
+                }
             }
         }
     }
